@@ -9,6 +9,16 @@ output:
 autosize: true
 bibliography: pg.bib
 ---
+
+<!--                          -->
+<!-- Turn off slide numbering -->
+<!--                          -->
+
+<style type="text/css">
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+</style>
   
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\bm}[1]{\mathbf{#1}}
