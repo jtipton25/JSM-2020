@@ -5,16 +5,11 @@ date: "8/6/2020"
 output: 
  ioslides_presentation:
     widescreen: true
+    css: styles.css
 autosize: true
 bibliography: pg.bib
 ---
-
-<style type="text/css">
-slides > slide:not(.nobackground):after {
-  content: '';
-}
-</style>
-
+  
 \newcommand{\bs}[1]{\boldsymbol{#1}}
 \newcommand{\bm}[1]{\mathbf{#1}}
 \newcommand{\oN}[1]{\operatorname{#1}}
@@ -30,65 +25,57 @@ library(knitr)
 library(pgR)
 ```
 
-## Pollen is widely available across the globe
+<!-- ## Pollen is widely available across the globe -->
 
-<center>
-<video width="600" height="480" muted controls>
-  <source src="./pollen.mp4" type="video/mp4">
-</video>
-</center>
+<!-- <center> -->
+<!-- <video width="600" height="480" muted controls> -->
+<!--   <source src="./pollen.mp4" type="video/mp4"> -->
+<!-- </video> -->
+<!-- </center> -->
 
 
 ## Pollen is a unique paleoclimate proxy
 
 - Globally distributed.
 
-<hr style="height:24px; visibility:hidden;" />
+<hr style="height:18px; visibility:hidden;" />
 
-- Trees are Long-lived -- little evolutionary drift during the Holocene.
+- Trees are long-lived -- little evolutionary drift during the Holocene.
 
-<hr style="height:24px; visibility:hidden;" />
+<hr style="height:18px; visibility:hidden;" />
 
 - Current species distributions with respect to climate are well understood.
 
-<hr style="height:24px; visibility:hidden;" />
+<hr style="height:18px; visibility:hidden;" />
 
-## Some like it hot, some not
-
-```{r, out.width = "100%", fig.align = 'center', cache = TRUE, message = FALSE}
-library(cowplot)
-p1 <- ggdraw() + draw_image(magick::image_read_pdf("psemen.pdf"), scale = 0.9)
-p2 <- ggdraw() + draw_image(magick::image_read_pdf("quefal.pdf"), scale = 0.9)
-
-plot_grid(p1, p2)
-# knitr::include_graphics(c("psemen.pdf", "quefal.pdf"))
-```
+- Many databases of pollen data.
+    - [Neotoma](https://www.neotomadb.org/groups/category/pollen).
+    - [European Pollen Database](http://www.europeanpollendatabase.net/index.php).
+    - [Global Pollen Database](https://ecologicaldata.org/wiki/global-pollen-database).
+    - [NOAA Pollen Database](https://www.ncdc.noaa.gov/data-access/paleoclimatology-data/datasets/pollen).
 
 
-- <font size="3">
-Source: [https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/LittleMaps.html](https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/LittleMaps.html)
-</font>
+<!-- ## Some like it hot, some not -->
 
-## Large databases of pollen data
+<!-- ```{r, out.width = "100%", fig.align = 'center', cache = TRUE, message = FALSE} -->
+<!-- library(cowplot) -->
+<!-- p1 <- ggdraw() + draw_image(magick::image_read_pdf("psemen.pdf"), scale = 0.9) -->
+<!-- p2 <- ggdraw() + draw_image(magick::image_read_pdf("quefal.pdf"), scale = 0.9) -->
 
-- [Neotoma](https://www.neotomadb.org/groups/category/pollen).
+<!-- plot_grid(p1, p2) -->
+<!-- # knitr::include_graphics(c("psemen.pdf", "quefal.pdf")) -->
+<!-- ``` -->
 
-<hr style="height:24px; visibility:hidden;" />
 
-- [European Pollen Database](http://www.europeanpollendatabase.net/index.php).
+<!-- - <font size="3"> -->
+<!-- Source: [https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/LittleMaps.html](https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/LittleMaps.html) -->
+<!-- </font> -->
 
-<hr style="height:24px; visibility:hidden;" />
-
-- [Global Pollen Database](https://ecologicaldata.org/wiki/global-pollen-database).
-
-<hr style="height:24px; visibility:hidden;" />
-
-- [NOAA Pollen Database](https://www.ncdc.noaa.gov/data-access/paleoclimatology-data/datasets/pollen).
 
 
 ## Most analysis are inherently non-spatial
 
-- Due to challenging data likelihood (compositional count data).
+- Due to challenging data likelihood.
 
 <hr style="height:24px; visibility:hidden;" />
 
@@ -97,6 +84,10 @@ Source: [https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/Litt
     <hr style="height:12px; visibility:hidden;" />
 
     - No obvious patterns when plotting the data.
+    
+    <hr style="height:12px; visibility:hidden;" />
+
+    - Inverse prediction problem.
 
 <hr style="height:24px; visibility:hidden;" />
 
@@ -123,9 +114,7 @@ Source: [https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/Litt
 <hr style="height:180px; visibility:hidden;" />
 
 
-<font size="3">
-@tipton2019predicting
-</font>
+<div class="footer" style="font-size:80%;"> @tipton2019predicting </div>
 
 ## Setting the stage 
 
@@ -133,14 +122,14 @@ Source: [https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/Litt
 
     <hr style="height:12px; visibility:hidden;" />
 
-    - Predictions at all locations remove the effects of sampling bias in paleoclimate reconstruction.
-
+    - Many important ecological questions are local.
+    
     <hr style="height:12px; visibility:hidden;" />
 
-    - Many important ecological questions are local.
+    - Predictions at all locations remove the effects of sampling bias in paleoclimate reconstruction.
+
 
 <hr style="height:24px; visibility:hidden;" />
-
 
 - Prior work -- 4 sites and total compute time of approximately 28 hours.
 
@@ -151,12 +140,10 @@ Source: [https://www.fs.fed.us/database/feis/pdfs/Little/aa_SupportingFiles/Litt
 
 <hr style="height:24px; visibility:hidden;" />
 
-<font size="3">
-@holmstrom2015bayesian
-</font>
+<div class="footer" style="font-size:80%;"> @holmstrom2015bayesian </div>
 
 
-## Pollen data
+---
 
 ```{r, fig.align='center', out.width = '100%'}
 knitr::include_graphics("./images/pollen-alps-sites.png") 
@@ -173,7 +160,7 @@ knitr::include_graphics("./images/pollen-alps-sites.png")
 
 <hr style="height:18px; visibility:hidden;" />
 
-* In each cube, researcher counts the first $N$ pollen grains and identifies to species.
+* In each cube, researcher counts the first $M$ pollen grains and identifies to species/OTU.
 
 <hr style="height:18px; visibility:hidden;" />
 
@@ -182,10 +169,6 @@ knitr::include_graphics("./images/pollen-alps-sites.png")
 <hr style="height:18px; visibility:hidden;" />
 
 - Compositional count data.
-
-    <hr style="height:12px; visibility:hidden;" />
-
-    * Total count is not informative of the process of interest. 
 
 ## Data model
 
@@ -203,24 +186,21 @@ $$\begin{align*}
 
 <hr style="height:24px; visibility:hidden;" />
 
-
-* $\mathbf{y}(\mathbf{s}, t)$ is informative of the relative proportions $\pi_{SB}(\boldsymbol{\eta}(\mathbf{s}, t))$ only.
+- Link the underlying climate states to the probability of observing species $j$ through the latent variable $\eta_j(\bm{s}, t)$
     
 ## Data model
 
-- $\pi_{SB}(\boldsymbol{\eta}(\mathbf{s}, t))$ is a stick breaking transformation .
+- $\pi_{SB}(\boldsymbol{\eta}(\mathbf{s}, t))$ is a stick breaking transformation.
 
     <hr style="height:12px; visibility:hidden;" />
     
-    - The map $\pi_{SB}: \mathcal{R}^{J-1} \rightarrow \Delta^{J}$ transforms the $J-1$ dimensional vector $\boldsymbol{\eta}(\mathbf{s}, t)$ to the $J$ dimensional unit simpled $\mathcal{\Delta}^{J}$,
+    - The map $\pi_{SB}: \mathcal{R}^{J-1} \rightarrow \Delta^{J}$ transforms the $J-1$ dimensional vector $\boldsymbol{\eta}(\mathbf{s}, t)$ to the $J$ dimensional unit simpled $\mathcal{\Delta}^{J}$.
     
 <hr style="height:24px; visibility:hidden;" />
 
 - Other maps to the unit simplex could be used (i.e., multi-logit), but the stick-breaking map will be important later.
 
 <hr style="height:24px; visibility:hidden;" />
-
-- Link the underlying climate states to the probability of observing species $j$ through the latent variable $\eta_j(\bm{s}, t)$
 
 
 ## Data model (ignoring spatio-temporal indexing)
@@ -239,9 +219,8 @@ $$\begin{align*}
 
 <hr style="height:8px; visibility:hidden;" />
 
-<font size="3">
-@polson2013bayesian, @linderman2015dependent
-</font>
+<div class="footer" style="font-size:80%;"> @polson2013bayesian, @linderman2015dependent </div>
+
 
 ## Data model (ignoring spatio-temporal indexing)
 
@@ -259,10 +238,7 @@ $$\begin{align*}
 
 <hr style="height:96px; visibility:hidden;" />
 
-<font size="3">
-@polson2013bayesian, @linderman2015dependent
-</font>
-
+<div class="footer" style="font-size:80%;"> @polson2013bayesian, @linderman2015dependent </div>
 
 ## Data model (ignoring spatio-temporal indexing)
 
@@ -281,10 +257,7 @@ where the integral defines a joint density over $[\eta_j, y_j, \omega_j]$.
 
 <hr style="height:24px; visibility:hidden;" />
 
-<font size="3">
-@polson2013bayesian, @linderman2015dependent
-</font>
-
+<div class="footer" style="font-size:80%;"> @polson2013bayesian, @linderman2015dependent </div>
 ## Data model
 
 - Using this integral representation, we have
@@ -344,7 +317,7 @@ $$\begin{align*}
 
 
 
-## Process model -- functional relationship 
+---
 
 ```{r, fig.align='center', out.width = '100%'}
 knitr::include_graphics("./images/response-curves-fixed-mu.png")
@@ -364,7 +337,7 @@ $\color{red}{\bm{X}(t) = \begin{pmatrix} \bm{x}'(\bm{s}_1, t) \\ \vdots \\ \bm{x
 
 - $\mathbf{Z}_0 \sim \oN{N} (\color{red}{\bm{X}'(1) \bs{\gamma}} + \color{purple}{\bm{W} \bs{\alpha}(1)}, \sigma^2_0 \bm{I})$ is the observed modern climate state.
 
-## Process Model -- $\color{red}{\mbox{fixed effects}}$
+---
 
 ```{r, fig.align='center', out.width = '100%'}
 knitr::include_graphics("./images/estimated-fixed-effects-fixed-mu.png") 
@@ -398,9 +371,7 @@ knitr::include_graphics(c("./images/MRA-grid.png", "./images/MRA-alpha-fixed-mu.
  
 <hr style="height:80px; visibility:hidden;" />
 
-<font size="3">
-@nychka2015multiresolution
-</font>
+<div class="footer" style="font-size:80%;"> @nychka2015multiresolution </div> 
 
 ## Process model -- $\color{purple}{\mbox{random effects}}$  
 
